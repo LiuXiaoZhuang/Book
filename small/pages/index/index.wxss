@@ -1,0 +1,199 @@
+.search_box{
+  margin-top: 20rpx;
+  width: 100%;
+  height: 60rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.search_hr{
+  display: block;
+  background: linear-gradient(to bottom,#FFFFFF,#f5e7e7);
+  height: 20rpx;
+  width: 100%;
+}
+.search_box text{
+  color: #CECECE;
+  font-size: 28rpx;
+  padding-left: 20rpx;
+}
+.search_box icon{
+  margin-right: 30rpx;
+  color: #FF0000;
+}
+
+.banner_box{
+  width: 100%;
+  height: 200rpx;
+  margin-top: 30rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+.banner_box .banner_title{
+  padding: 0 20rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+}
+.banner_box .banner_title text{
+  color: #244225;
+  font-size: 35rpx;
+}
+.banner_box .banner{
+  flex: 1;
+  padding: 0 20rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+.banner_box swiper{
+  flex: 1;
+  display: flex;
+  height: 200rpx;
+  width: 100%;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+.banner_box swiper swiper-item{
+  flex: 1;
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10rpx;
+}
+
+.banner_box swiper swiper-item image{
+  width: 100%;
+  height: 200rpx;
+}
+
+
+.novel_box{
+  margin-top: 40rpx;
+  width: 100%;
+  display: block;
+}
+.novel_box .title{
+  width: 100%;
+  margin-bottom: 20rpx;
+}
+.novel_box .title text{
+  padding: 0 20rpx;
+  font-size: 30rpx;
+}
+.novel_box .novel_list{
+  flex: 1;
+  padding: 0 20rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding-bottom: 40rpx;
+}
+.novel_box .novel_list .novel{
+  width: 155rpx;
+  margin-right: 30rpx;
+  margin-bottom: 30rpx;
+}
+.novel_box .novel_list .novel:nth-child(4n){
+  margin-right: 0rpx;
+}
+
+.novel_box .novel_list .novel .novel_cover{
+  width: 100%;
+  height: 220rpx;
+  background: #EEEEEE;
+  padding: 0rpx;
+  margin: 0rpx;
+}
+.novel_box .novel_list .novel_name{
+  font-size: 20rpx;
+  color: #000000;
+  display: block;
+}
+.novel_box .novel_list .novel_author{
+  font-size: 20rpx;
+  color: #898989;
+  display: block;
+}
+.novel_box .bottom_box{
+  flex: 1;
+  height: 1px;
+  padding: 0 20rpx;
+  display: flex;
+}
+.novel_box .bottom_box view{
+  flex: 1;
+  background: #CECECE;
+}
+.novel_box:last-child .bottom_box{
+  display: none;
+}
+
+.read_cord_box{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.read_cord_box .read_box{
+  display: block;
+  width: 600rpx;
+  height: 250rpx;
+  background: #FFFFFF;
+  border-radius: 10rpx;
+
+}
+.read_cord_box .read_box image{
+  display: block;
+  width: 100%;
+  height: 300rpx;
+  border-radius: 10rpx 10rpx 0 0;
+}
+.read_cord_box .read_box .read_info{
+  display: flex;
+  width: 100%;
+  height: 250rpx;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+.read_cord_box .read_box .read_info .title{
+  display: block;
+  padding: 40rpx 30rpx;
+}
+.read_cord_box .read_box .read_info .btn_box{
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+.read_cord_box .read_box .read_info .btn_box text{
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30rpx;
+}
+.read_cord_box .read_box .read_info .btn_box text.cancel{
+  background: #EEEEEE;
+  border-radius: 0 0 0 10rpx;
+}
+.read_cord_box .read_box .read_info .btn_box text.read{
+  background: #f47d63;
+  border-radius: 0 0 10rpx 0;
+}

@@ -1,0 +1,30 @@
+<view class='main_box'>
+  <view class='search_box'>
+    <icon size="16" type='search'></icon>
+    <input type='text' placeholder="书名/作者" adjust-position="{{false}}" confirm-type="search" bindinput="setKeyword" value="{{keyword}}"></input>
+    <text catchtap='search'>搜索</text>
+  </view>
+  <view class='hot_box' wx:if="{{box_flag==1}}">
+    <view class='inner_box'>
+      <text class='title'>小说类型</text>
+      <view class='word_list'>
+        <text style="{{selected_novel_type==0?selected_style:''}}" catchtap="novelType" data-novel_type_id="0">全部</text>
+        <text wx:for="{{novel_type_list}}" wx:for-index="index" wx:for-item="item" wx:key="{{index}}" style="{{selected_novel_type==item.novel_type_id?selected_style:''}}" catchtap="novelType" data-novel_type_id="{{item.novel_type_id}}">{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+  <view class='novel_list' wx:else>
+    <block wx:for="{{novel_list}}" wx:for-index="index" wx:for-item="item" wx:key="{{index}}">
+      <view class='novel_box' wx:for="{{item}}" wx:for-index="novel_index" wx:for-item="novel" wx:key="{{novel.novel_id}}" catchtap="novelDetail" data-novel_id='{{novel.novel_id}}'>
+        <view class='novel'>
+          <image class='novel_cover' mode="scaleToFill" src="{{novel.cover_img+'?imageView2/0/w/130/h/180'}}"></image>
+          <view class='novel_info'>
+            <text class='title'>{{novel.name}}</text>
+            <text class='author'>{{novel.author}}</text>
+            <text class='introduce'>{{novel.introduce}}</text>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

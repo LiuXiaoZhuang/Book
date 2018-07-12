@@ -1,0 +1,125 @@
+.page{
+    align-self: center;
+    flex: 1;
+    display: flex;
+    width: 1200px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.novel_list{
+    display: flex;
+    width:100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 30px 0px;
+}
+.novel_list .novel{
+    display: flex;
+    width: 390px;
+    height: 136px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding-bottom: 20px;
+    box-shadow: 1px 1px 2px 0px #F0EFEF;
+    margin-bottom: 20px;
+}
+.novel_list .novel:nth-child(3n-1){
+    margin-left: 15px;
+    margin-right: 15px;
+}
+.novel_list .novel .novel_cover{
+    display: block;
+    height: 136px;
+    width: 102px;
+    margin-right: 10px;
+}
+.novel_list .novel .novel_cover img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #EEEEEE;
+}
+.novel_list .novel .novel_info{
+    flex:1;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.novel_list .novel .novel_info .novel_name{
+    padding: 10px 0px;
+}
+.novel_list .novel .novel_info .novel_name a{
+    font-size: 18px;
+    color: #000000;
+}
+.novel_list .novel .novel_info .novel_name a:hover{
+    color: #514D4D;
+}
+
+.novel_list .novel .novel_info .novel_author{
+    font-size: 14px;
+    line-height: 16px;
+    color: #A6A6A6;
+    margin-bottom: 6px;
+}
+.novel_list .novel .novel_info .novel_introduce{
+    display: block;
+    display: -webkit-box;
+    font-size: 14px;
+    line-height: 22px;
+    color: #666666;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.page_box{
+    flex: 1;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+.page_box .ui-pagination-container{
+    flex: 1;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+.page_box .ui-pagination-container input{
+    display: block;
+    width: 50px;
+    height: 22px;
+}
+.ui-pagination-container .ui-pagination-page-item,.ui-pagination-container .ui-pagination-page-btn{
+    display: block;
+    font-size:14px;
+    padding:6px 10px;
+    background:#FFFFFF;
+    border:1px solid #C5B7B7;
+    color:#8888888;
+    margin:0 3px;
+}
+.ui-pagination-container .ui-pagination-page-item:hover{
+    border-color:#568DBD;
+    color:#568DBD;
+    text-decoration:none;
+}
+.ui-pagination-container .ui-pagination-page-item.active{
+    background:#30A5DA;
+    border-color:#30A5DA;
+    color:#FFFFFF;
+    cursor:default;
+}

@@ -1,0 +1,223 @@
+
+.novel_info{
+  width: 100%;
+  height: 300rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #000000;
+}
+.novel_info .novel_cover{
+  width: 120rpx;
+  height: 150rpx;
+  background: #EEEEEE;
+}
+.novel_info .novel_name{
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #FFFFFF; 
+  margin-top: 20rpx;
+}
+.novel_info .novel_author{
+  font-size: 24rpx;
+  color: #FFFFFF;
+  margin-top: 10rpx;
+}
+.novel_data{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 30rpx 0;
+}
+.border_view{
+  display: block;
+  width: 690rpx;
+  height: 1px;
+  background: #CECECE;
+  margin: 0 auto;
+}
+.novel_data .data_info{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.novel_data .data_info .data{
+  font-size:32rpx;
+  margin-bottom: 10rpx;
+}
+.novel_data .data_info .info{
+  font-size:24rpx;
+  color: #BCBCBC;
+}
+
+.list_ctrl{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 30rpx 0;
+  position: relative;
+  height: 50rpx;
+}
+.list_ctrl .tip{
+  font-size: 34rpx;
+  padding-left: 30rpx;
+  margin-right: 60rpx;
+}
+.list_ctrl .last{
+  font-size: 24rpx;
+  color: #707070;
+  width: 510rpx;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  display: block;
+}
+.novel_introduce{
+  display: block;
+  width: 100%;
+  padding:30rpx 0 150rpx 0;
+}
+
+.novel_introduce text{
+  display: block;
+  height: auto;
+  flex: 1;
+  padding: 0 30rpx;
+  font-size: 32rpx;
+  line-height: 50rpx;
+}
+.read_ctrl{
+  position: fixed;
+  bottom: 0rpx;
+  width: 100%;
+  height: 120rpx;
+  background: #FFFFFF;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  box-shadow: 0 -1px 1px 0px #fcf3f3;
+}
+.read_ctrl .home{
+  display: block;
+  width: 60rpx;
+  margin-left: 20rpx;
+  padding-right: 20rpx;
+  border-right: 1px solid #CECECE;
+}
+.read_ctrl .btn_box{
+  flex: 1;
+  height: 120rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+.read_ctrl .btn_box .add_books{
+  flex: 1;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  font-size: 30rpx;
+}
+.read_ctrl .btn_box .add_books .icon{
+  margin-right: 10rpx;
+}
+.read_ctrl .btn_box .read{
+  flex: 1;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  font-size: 30rpx;
+  color: #FFFFFF;
+  background: #FF0000;
+}
+page{
+  background: #EEEEEE;
+  height: 100%;
+  max-height: 100%;
+  overflow: hidden;
+}
+.main_box{
+  background: #FFFFFF;
+  overflow-y: scroll;
+  display: block;
+}
+.novel_dir_box{
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+.novel_dir_box .novel_dir_inner_box{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background: #FFFFFF;
+  width: 600rpx;
+  height: 100%;
+  overflow-y: scroll;
+  position: relative;
+  z-index: 3;
+  left: -600rpx;
+}
+.novel_dir_box .mask_bok{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.7);
+}
+.novel_dir_box .novel_dir_inner_box .novel_dir{
+  flex: 1;
+  display: block;
+  min-height: 100%;
+  padding:0 30rpx;
+  padding-bottom: 50rpx;
+}
+.novel_dir_box .novel_dir_inner_box .novel_dir .desc{
+  display: block;
+  width: 100%;
+  padding: 20rpx 0rpx;
+  border-bottom: 1px solid #EEEEEE;
+  border-top: 1px solid #EEEEEE;
+  margin: 15rpx 0;
+}
+.novel_dir_box .novel_dir_inner_box .novel_dir .desc:first-child{
+  border-top: 0;
+  margin-top: 0;
+}
+.novel_dir_box .novel_dir_inner_box .novel_dir .desc text{
+  font-size: 24rpx;
+}
+.novel_dir_box .novel_dir_inner_box .novel_dir .dir{
+  display: block;
+  width: 100%;
+  padding: 15rpx 0rpx; 
+}
+.novel_dir_box .novel_dir_inner_box .novel_dir .dir .chapter{
+  font-size: 30rpx;
+}

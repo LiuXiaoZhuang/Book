@@ -1,0 +1,48 @@
+<view class='main_box'>
+  <!--搜索盒子-->
+  <view class='search_box' catchtap='showSearchPage'>
+    <text>搜索：书名/作者名</text>
+    <icon type='search' color="#FF0000"></icon>
+  </view>
+  <view class='search_hr'></view>
+
+  <view class='banner_box'>
+    <view class='banner'>
+      <swiper autoplay="true" interval="1500"  duration="500">
+          <swiper-item wx:for="{{carousel}}" wx:for-index="index" wx:for-item="item" wx:key="{{index}}">
+            <image mode="scaleToFill" src="{{item.img+'?imageView2/0/w/710/h/200'}}"></image>
+          </swiper-item>
+          
+      </swiper>
+    </view>
+  </view>
+
+  <view class='novel_box' wx:for="{{novel_block}}" wx:for-index="block_index" wx:for-item="block_item" wx:key="{{block_index}}">
+    <view class='title'>
+      <text>{{block_item.name}}</text>
+    </view>
+    <view class='novel_list'>
+      <view class='novel' catchtap='novelDetail' wx:for="{{block_item.novel_list}}" wx:for-index="novel_index" wx:for-item="novel_item" wx:key="{{novel_index}}" data-id="{{novel_item.novel_id}}">
+        <image mode="scaleToFill" class='novel_cover' src="{{novel_item.cover_img+'?imageView2/0/w/155/h/220'}}"></image>
+        <text class='novel_name'>{{novel_item.name}}</text>
+        <text class='novel_author'>{{novel_item.author}}</text>
+      </view>
+    </view>
+    <view class="bottom_box">
+      <view></view>
+    </view>
+  </view>
+</view>
+
+<view class="read_cord_box" catchtap='' wx:if="{{show_read}}">
+  <view class="read_box" style="{{read_cord_box_style}}">
+    <image mode="scaleToFill" src="{{banner.img+'?imageView2/0/w/600/h/300'}}"></image>
+    <view class='read_info'>
+      <text class='title'>是否继续上次的阅读</text>
+      <view class="btn_box">
+        <text class="cancel" catchtap="cancelRead">取消</text>
+        <text class="read" catchtap="readNow">继续阅读</text>
+      </view>
+    </view>
+  </view>
+</view>

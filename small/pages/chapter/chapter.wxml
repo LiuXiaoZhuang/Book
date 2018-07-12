@@ -1,0 +1,73 @@
+<scroll-view class='main_box' style="{{mode_style[bg_mode].content_bgcolor}}" scroll-y="{{true}}" catchtap='scroll_move' bindscroll='scroll_move' scroll-top="{{content_scroll}}">
+  <text class='title' style="{{mode_style[bg_mode].title_color}}">{{novel_chapter.name}}</text>
+  <view class='content_box' style="{{mode_style[bg_mode].content_color+font_settings['f_'+font_size]}}">
+    <text class='paragraph' wx:for="{{novel_chapter.content}}" wx:for-index="chapter_index" wx:for-item="chapter_item" wx:key="{{chapter_index}}">{{chapter_item}}</text>
+  </view>
+  <view class='quick_box'>
+    <view class='quick_inner_box'>
+      <button catchtap='preChapter' >上一章</button>
+      <button catchtap='nextChapter' >下一章</button>
+    </view>
+  </view>
+</scroll-view>
+<view class='show_ctrl_click_area' hidden="{{show_ctrl}}" catchtap="show_ctrl_box"></view>
+<view class='ctrl_box' style="{{mode_style[bg_mode].ctrl_box_style}}" hidden="{{!show_ctrl}}">
+  <text class='title'>{{novel_chapter.name}}</text>
+  <view class='dir_slider'>
+    <text class='icon book-icon-left' catchtap='preChapter'></text>
+    <slider step="1" block-size="16" block-color="{{mode_style[bg_mode].slider_color}}" backgroundColor="{{mode_style[bg_mode].slider_bgcolor}}" activeColor="{{mode_style[bg_mode].slider_color}}" min="1" max="{{chapter_list.length}}" value="{{read_novel_process}}" disabled />
+    <text class='icon book-icon-right' catchtap='nextChapter'></text>
+  </view>
+  <view class='setting_box'>
+    <view class='setting' catchtap='show_dir_box'>
+      <text class='icon book-icon-menu'></text>
+      <text class='text'>目录</text>
+    </view>
+    <view class='setting' wx:if="{{bg_mode==1}}" catchtap='changeBg'>
+      <text class='icon book-icon-moon'></text>
+      <text class='text'>夜间模式</text>
+    </view>
+    <view class='setting' wx:else  catchtap='changeBg'>
+      <text class='icon book-icon-sum'></text>
+      <text class='text'>日间模式</text>
+    </view>
+    <view class='setting' catchtap='show_font_setting_box'>
+      <text class='icon book-icon-settings'></text>
+      <text class='text'>设置</text>
+    </view>
+  </view>
+</view>
+
+
+<view class='novel_dir_box' hidden="{{show_dir}}">
+  <view class='mask_bok' catchtap='show_dir_box'></view>
+  <view class='novel_dir_inner_box' catchtap='' animation="{{dirAnimation.animation}}">
+    <view catchtap='novelDetail' class='novel_info' style="{{mode_style[bg_mode].dir_novel_info_style}}">
+      <image class='novel_cover' mode="scaleToFill" src="{{cover_img+'?imageView2/0/w/100/h/120'}}"></image>
+      <view class='info'>
+        <text class='novel_title' style="{{mode_style[bg_mode].dir_novel_title_color}}">{{name}}</text>
+        <text class='novel_author' style="{{mode_style[bg_mode].dir_novel_author_color}}">{{author}}</text>
+      </view>
+      <text class='icon book-icon-right'></text>
+    </view>
+    <scroll-view class='novel_out_dir' scroll-y="{{true}}" style="{{mode_style[bg_mode].dir_novel_dir_style}}" scroll-into-view="{{scroll_id}}">
+      <view class='novel_dir'>
+        <view class='desc' style="{{mode_style[bg_mode].dir_novel_border_color}}">
+          <text>正文卷</text>
+        </view>
+        <view class='dir' id="{{'c_'+item.novel_chapter_id}}" wx:for="{{chapter_list}}" wx:for-index="index" wx:for-item="item" wx:key="{{index}}" style="{{item.novel_chapter_id==novel_chapter.novel_chapter_id?mode_style[bg_mode].selected_novel_dir_color:''}}" data-novel_chapter_id="{{item.novel_chapter_id}}" catchtap="toChapter">
+          <text class='chapter'>{{item.name}}</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>
+
+<view class="read_setting_box" style="{{mode_style[bg_mode].ctrl_box_style}}" hidden="{{show_font_setting}}" >
+  <text class='title'>字体大小设置</text>
+  <view class='font_setting_box'>
+    <text>A-</text>
+    <slider step="2" block-size="16" block-color="{{mode_style[bg_mode].slider_color}}" backgroundColor="{{mode_style[bg_mode].slider_bgcolor}}" activeColor="{{mode_style[bg_mode].slider_color}}" value="{{font_size}}" min="28" max="40" bindchanging="changeFontSize" />
+    <text>A+</text>
+  </view>
+</view>

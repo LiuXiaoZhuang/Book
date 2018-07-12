@@ -1,0 +1,31 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/books/books",
+    "pages/search/search",
+    "pages/novel/novel",
+    "pages/chapter/chapter"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "个人小时光",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/images/icons/home1.png",
+        "selectedIconPath": "/images/icons/home2.png"
+      },
+      {
+        "pagePath": "pages/books/books",
+        "text": "书架",
+        "iconPath": "/images/icons/books1.png",
+        "selectedIconPath": "/images/icons/books2.png"
+      }
+    ]
+  }
+}

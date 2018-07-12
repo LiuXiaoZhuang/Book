@@ -1,0 +1,41 @@
+page{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+.main_box{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+@font-face {font-family: "book_font";
+  src: url('data:application/x-font-woff;charset=utf-8;base64,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') format('woff');
+}
+
+[class^="book-icon"], [class*=" book-icon"] {
+  font-family:"book_font" !important;
+  font-size:32rpx;
+  speak:none;
+  font-style:normal;
+  font-weight:400;
+  font-variant:normal;
+  text-transform:none;
+  line-height:1;
+  vertical-align:baseline;
+  display:inline-block;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+.book-icon-sum:before { content: "\e632"; }
+.book-icon-moon:before { content: "\e633"; }
+.book-icon-settings:before { content: "\e634"; }
+.book-icon-right:before { content: "\e7eb"; }
+.book-icon-left:before { content: "\e7ec"; }
+.book-icon-menu:before { content: "\e7f4"; }

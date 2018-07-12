@@ -1,0 +1,27 @@
+<view class='main_box'>
+  <view class='banner' wx:if="{{banner!=null}}">
+    <image mode="scaleToFill" src="{{banner.img+'?imageView2/0/w/710/h/180'}}"></image>
+  </view>
+  <scroll-view class='novel_list' wx:if="{{books.length>0}}" scroll-y="{{true}}">
+    <view class='novel_animation_box' wx:for="{{books}}" wx:for-index="index" wx:for-item="item" wx:key="{{item.novel_id}}">
+      <view class='novel_box' animation="{{ctrlAnimation['n_'+item.novel_id].animation}}">
+        <view class='novel'>
+          <image class='novel_cover' catchtap='chapterDetail' mode="scaleToFill" src="{{item.cover_img+'?imageView2/0/w/120/h/160'}}" data-novel_id="{{item.novel_id}}" data-novel_chapter_id="{{item.novel_chapter_id}}"></image>
+          <view class='novel_info' catchtap='chapterDetail' data-novel_id="{{item.novel_id}}" data-novel_chapter_id="{{item.novel_chapter_id}}">
+            <text class='novel_name'>{{item.name}}</text>
+            <text class='record'>{{item.read}}</text>
+            <text class='novel_author'>{{item.author}}</text>
+          </view>
+          <image class='show_ctrl' src='/images/icons/more.png' catchtap='showCtrl' data-novel_id="{{item.novel_id}}"></image>
+        </view>
+        <view class='novel_ctrl'>
+            <button class='top' catchtap="setTop" data-bookshelf_id="{{item.bookshelf_id}}">{{item.inner_page==0?'置顶':'取消置顶'}}</button>
+            <button class='del' catchtap="delBook" data-novel_id="{{item.novel_id}}">删除</button>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+  <view class="no_book" wx:else>
+    还没有喜欢的书吗
+  </view>
+</view>

@@ -1,0 +1,124 @@
+.search_box{
+  margin-top: 20rpx;
+  width: 100%;
+  height: 60rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 1px solid #CECECE;
+  padding-bottom: 20rpx;
+}
+.search_box icon{
+  margin-left: 30rpx;
+}
+.search_box input{
+  flex: 1;
+  padding-left: 10rpx;
+  margin-right: 20rpx;
+  font-size: 32rpx;
+}
+.search_box text{
+  color: blue;
+  font-size: 32rpx;
+  margin-right: 20rpx;
+}
+
+.hot_box{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  margin-top: 30rpx;
+}
+.hot_box .inner_box{
+  flex: 1;
+  padding: 0 20rpx;
+}
+.hot_box .inner_box .title{
+  display: block;
+  font-size: 32rpx;
+  margin-bottom: 30rpx;
+}
+.hot_box .inner_box .word_list{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.hot_box .inner_box .word_list text{
+  display: inline-block;
+  font-size: 32rpx;
+  padding: 20rpx;
+  border: 1px solid #EEEEEE;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.novel_list{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.novel_list .novel_box{
+  width: 100%;
+  height: 180rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  padding: 40rpx 0;
+  border-bottom: 1px solid #EEEEEE;
+}
+.novel_list .novel_box .novel{
+  flex: 1;
+  padding: 0 30rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+.novel_list .novel_box .novel .novel_cover{
+  display: block;
+  width: 130rpx;
+  min-width: 130rpx;
+  max-width: 130rpx;
+  height: 100%;
+  background: #EEEEEE;
+  margin-right: 20rpx;
+}
+.novel_list .novel_box .novel .novel_info{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.novel_list .novel_box .novel .novel_info .title{
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #000000;
+}
+.novel_list .novel_box .novel .novel_info .author{
+  font-size: 22rpx;
+  color: #BCBCBC;
+  margin: 16rpx 0;
+}
+.novel_list .novel_box .novel .novel_info .introduce{
+  font-size: 30rpx;
+  color: #111111;
+  height: 80rpx;
+  line-height: 40rpx;
+  width: 540rpx;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}

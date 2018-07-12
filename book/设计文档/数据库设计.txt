@@ -1,0 +1,263 @@
+数据库设计：
+
+数据表模版：
+create table `name`(
+    `id` int not null auto_increment comment '编号',
+    `create_time` int not null default 0 comment '创建时间',
+    `status` tinyint(1) not null default 1 comment '状态（0 为禁用 , 1 正常）',
+    `deleted_at` int null comment '是否删除（存在则删除）',
+    `remark` text comment '备注',
+    primary key(`id`),
+    unique(`account`),
+    index(`phone`),
+    index(`email`),
+    index(`city`),
+    index(`status`)
+)ENGINE=InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_general_ci COMMENT='模版';
+
+
+
+用户表：
+create table `customer`(
+    `id` int not null auto_increment comment '编号',
+    `account` varchar(100) not null default '' comment '帐号（唯一值，但不是唯一键）',
+    `phone` char(11) not null default '' comment '手机号',
+    `password` varchar(300) not null default '' comment '密码',
+    `clear_password` char(20) not null default '' comment '明文密码',
+    `nickname` varchar(100) not null default '' comment '昵称',
+    `head_img` int not null default 0 comment '头像',
+    `create_time` int not null default 0 comment '创建时间',
+    `status` tinyint(1) not null default 1 comment '状态（0 为禁用 , 1 正常）',
+    `remark` text comment '备注',
+    primary key(`id`),
+    index(`phone`),
+    index(`account`),
+    index(`status`)
+)ENGINE=InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_general_ci COMMENT='用户表';
+
+用户关联表：
+create table `customer_relation`(
+    `id` int not null auto_increment comment '编号',
+    `customer_id` int not null comment '用户id',
+    `type` varchar(50) not null default '' comment '类型（orm模型名称）',
+    `action_id` int not null comment '关联id',
+    `create_time` int not null default 0 comment '创建时间',
+    primary key(`id`),
+    index(`customer_id`),
+    index(`type`),
+    index(`action_id`)
+)ENGINE=MyISAM CHARSET=utf8mb4 COLLATE utf8mb4_general_ci COMMENT='用户关联表';
+
+
+用户登录标识表：
+create table `customer_token`(
+    `id` int not null auto_increment comment '编号',
+    `customer_id` int not null comment '用户id',
+    `token` varchar(300) not null default '' comment '登录标识',
+    `session_key` varchar(300) not null default '' comment '小程序登录标识',
+    `update_time` int not null default 0 comment '更新时间',
+    `create_time` int not null default 0 comment '创建时间',
+    `status` tinyint(1) not null default 1 comment '状态（0 为禁用 , 1 正常）',
+    primary key(`id`),
+    index(`customer_id`),
+    index(`token`),
+    index(`status`)
+)ENGINE=InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_general_ci COMMENT='用户登录标识表';
+
+小程序用户表：
+create table `small_user`(
+    `id` int not null auto_increment comment '编号',
+    `openid` varchar(300) not null default '' comment '微信标识',
+    `nickname` varchar(50) not null default '' comment '昵称',
+    `gender` tinyint(1) not null default 0 comment '性别，1 男，2 女，0 未知',
+    `city` varchar(50) not null default '' comment '城市',
+    `province` varchar(50) not null default '' comment '省份',
+    `country` varchar(50) not null default '' comment '国家',
+    `language` varchar(50) not null default 'zh_CN' comment '语言',
+    `avatarurl` varchar(300) not null default '' comment '头像',
+    `unionid` varchar(300) not null default '' comment '开发平台标识',
+    `appid` varchar(300) not null default '' comment '小程序appid',
+    `create_time` int not null default 0 comment '创建时间',
+    `status` tinyint(1) not null default 1 comment '状态（0 为禁用 , 1 正常）',
+    `remark` text comment '备注',
+    primary key(`id`),
+    index(`openid`),
+    index(`unionid`),
+    index(`appid`),
+    index(`status`)
+)ENGINE=InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_general_ci COMMENT='小程序用户表';
+
+
+书架表：
+create table `bookshelf`(
+    `id` int not null auto_increment comment '编号',
+    `customer_id` int not null comment '用户id',
+    `novel_id` int not null comment '小说id',
+    `novel_chapter_id` int not null comment '小说章节id',
+    `inner_page` int not null default 0 comment '当前页数',
+    `create_time` int not null default 0 comment '创建时间',
+    `status` tinyint(1) not null default 1 comment '状态（0 为禁用 , 1 正常）',
+    `remark` text comment '备注',
+    primary key(`id`),
+    index(`customer_id`),
+    index(`novel_id`),
+    index(`status`)
+)ENGINE=MyISAM CHARSET=utf8mb4 COLLATE utf8mb4_general_ci COMMENT='书架表';
+
+
+小说类型表：
+create table `novel_type`(
+    `id` int not null auto_increment comment '编号',
+    `name` char(20) not null default '' comment '类型名称',
+    `gid` int not null default 0 comment '父id',
+    `level` int not null default 1 comment '层级',
+    `create_time` int not null default 0 comment '创建时间',
+    `status` tinyint(1) not null default 1 comment '状态（0 为禁用 , 1 正常）',
+    `remark` text comment '备注',
+    primary key(`id`),
+    index(`gid`),
+    index(`level`),
+    index(`status`)
+)ENGINE=MyISAM CHARSET=utf8mb4 COLLATE utf8mb4_general_ci COMMENT='小说类型表';
+
+
+小说表：
+create table `novel`(
+    `id` int not null auto_increment comment '编号',
+    `name` char(20) not null default '' comment '小说名称',
+    `author` varchar(100) not null default '' comment '作者',
+    `cover_img` int not null default 0 comment '封面图',
+    `push_time` int not null default 0 comment '发布时间',
+    `descrpition` varchar(500) not null default '' comment '描述',
+    `create_time` int not null default 0 comment '创建时间',
+    `status` tinyint(1) not null default 1 comment '状态（0 为禁用 , 1 正常）',
+    `remark` text comment '备注',
+    primary key(`id`),
+    index(`name`),
+    index(`status`)
+)ENGINE=MyISAM CHARSET=utf8mb4 COLLATE utf8mb4_general_ci COMMENT='小说表';
+
+
+小说关联表：
+create table `novel_relation`(
+    `id` int not null auto_increment comment '编号',
+    `novel_id` int not null comment '小说id',
+    `type` varchar(100) not null default '' comment '类型（使用orm类名）',
+    `action_id` int not null comment '关联id',
+    `create_time` int not null default 0 comment '创建时间',
+    primary key(`id`),
+    index(`novel_id`),
+    index(`type`),
+    index(`action_id`)
+)ENGINE=MyISAM CHARSET=utf8mb4 COLLATE utf8mb4_general_ci COMMENT='小说表';
+
+
+小说章节表：
+create table `novel_chapter`(
+    `id` int not null auto_increment comment '编号',
+    `novel_id` int not null comment '小说id',
+    `name` char(100) not null default '' comment '章节名称',
+    `content` text comment '章节内容',
+    `sort` int not null default 0 comment '排序',
+    `create_time` int not null default 0 comment '创建时间',
+    `status` tinyint(1) not null default 1 comment '状态（0 为禁用 , 1 正常）',
+    `remark` text comment '备注',
+    primary key(`id`),
+    index(`novel_id`),
+    index(`status`)
+)ENGINE=MyISAM CHARSET=utf8mb4 COLLATE utf8mb4_general_ci COMMENT='小说章节表';
+
+
+管理员表：
+create table `manager`(
+    `id` int not null auto_increment comment '编号',
+    `account` varchar(100) not null default '' comment '帐号（唯一值，但不是唯一键）',
+    `phone` char(11) not null default '' comment '手机号',
+    `password` varchar(300) not null default '' comment '密码',
+    `create_time` int not null default 0 comment '创建时间',
+    `status` tinyint(1) not null default 1 comment '状态（0 为禁用 , 1 正常）',
+    `remark` text comment '备注',
+    primary key(`id`),
+    index(`phone`),
+    index(`account`),
+    index(`status`)
+)ENGINE=InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_general_ci COMMENT='管理员表';
+
+
+文件资源表：
+create table `source`(
+    `id` int not null auto_increment comment '编号',
+    `name` varchar(300) not null default '' comment '文件名称',
+    `url` text comment '资源链接',
+    `type` char(10) not null default '' comment 'img,doc,pdf,xls,txt,zip,apk,vedio,other',
+    `size` double not null default 0 comment '文件大小（kb）',
+    `width` int not null default 0 comment '图片宽度',
+    `height` int not null default 0 comment '图片高度',
+    `create_time` int not null default 0 comment '创建时间',
+    `status` tinyint(1) not null default 1 comment '状态（0 为禁用 , 1 正常）',
+    `deleted_at` int null comment '是否删除（存在则删除）',
+    `remark` text comment '备注',
+    primary key(`id`),
+    index(`type`),
+    index(`status`)
+)ENGINE=MyISAM CHARSET=utf8mb4 COLLATE utf8mb4_general_ci COMMENT='文件资源表';
+
+
+广告表：
+create table `ad`(
+    `id` int not null auto_increment comment '编号',
+    `type` tinyint(1) not null default 1 comment '类型（1 banner , 2 随机广告）',
+    `name` varchar(100) not null default '' comment '',
+    `desc` varchar(100) not null default '' comment '',
+    `img` int not null default 0 comment '图片id',
+    `url` varchar(500) not null default '' comment '跳转链接',
+    `nav_type` tinyint(1) not null default 1 comment '跳转类型（1 web页面 , 2 小程序内部跳转[内页]，3 小程序内部跳转[tag页]，4 跳小程序）',
+    `create_time` int not null default 0 comment '创建时间',
+    `status` tinyint(1) not null default 1 comment '状态（0 为禁用 , 1 正常）',
+    `remark` text comment '备注',
+    primary key(`id`),
+    index(`type`),
+    index(`status`)
+)ENGINE=MyISAM CHARSET=utf8mb4 COLLATE utf8mb4_general_ci COMMENT='广告表';
+
+
+小说板块表：
+create table `novel_block`(
+    `id` int not null auto_increment comment '编号',
+    `name` char(20) not null default '' comment '板块名称',
+    `sort` int not null default 0 comment '排序（从小到大）',
+    `create_time` int not null default 0 comment '创建时间',
+    `status` tinyint(1) not null default 1 comment '状态（0 为禁用 , 1 正常）',
+    `remark` text comment '备注',
+    primary key(`id`),
+    index(`sort`),
+    index(`status`)
+)ENGINE=MyISAM CHARSET=utf8mb4 COLLATE utf8mb4_general_ci COMMENT='小说板块表';
+
+
+小说板块内容表：
+create table `novel_block_content`(
+    `id` int not null auto_increment comment '编号',
+    `novel_block_id` int not null comment '小说板块id',
+    `novel_id` int not null comment '小说id',
+    `sort` int not null default 0 comment '排序（从小到大）',
+    `create_time` int not null default 0 comment '创建时间',
+    `status` tinyint(1) not null default 1 comment '状态（0 为禁用 , 1 正常）',
+    `remark` text comment '备注',
+    primary key(`id`),
+    index(`novel_block_id`),
+    index(`novel_id`),
+    index(`sort`),
+    index(`status`)
+)ENGINE=MyISAM CHARSET=utf8mb4 COLLATE utf8mb4_general_ci COMMENT='小说板块内容表';
+
+热门搜索表：
+create table `hot_search`(
+    `id` int not null auto_increment comment '编号',
+    `keyword` varchar(50) not null default '' comment '搜索关键词',
+    `condition` text comment '搜索条件（序列化）',
+    `create_time` int not null default 0 comment '创建时间',
+    `status` tinyint(1) not null default 1 comment '状态（0 为禁用 , 1 正常）',
+    primary key(`id`),
+    index(`status`)
+)ENGINE=MyISAM CHARSET=utf8mb4 COLLATE utf8mb4_general_ci COMMENT='热门搜索表';

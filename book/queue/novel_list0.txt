@@ -1,0 +1,7 @@
+php artisan queue:work --queue=novel_list --daemon --tries=3 --timeout=60
+
+
+php artisan queue:work --queue=novel  --daemon --tries=3 --timeout=60
+
+
+php artisan queue:work --queue=novel_chapter  --daemon --tries=3 --timeout=60

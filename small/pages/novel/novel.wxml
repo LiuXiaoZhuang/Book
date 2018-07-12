@@ -1,0 +1,58 @@
+<view class='main_box'>
+  <view class='novel_info'>
+    <image class='novel_cover' mode="scaleToFill" src="{{cover_img+'?imageView2/0/w/120/h/150'}}"></image>
+    <text class='novel_name'>{{name}}</text>
+    <text class='novel_author'>{{author}}</text>
+  </view>
+  <view class='novel_data'>
+    <view class='data_info'>
+      <text class='data'>401万字</text>
+      <text class='info'>连载</text>
+    </view>
+    <view class='data_info'>
+      <text class='data'>8960万人</text>
+      <text class='info'>阅读</text>
+    </view>
+    <view class='data_info'>
+      <text class='data'>9.8分</text>
+      <text class='info'>评分</text>
+    </view>
+  </view>
+  <view class='border_view'></view>
+  <view class='list_ctrl' catchtap='show_dir'>
+    <text class='tip'>目录</text>
+    <text class='last'>最新 {{chapter_list[chapter_list.length-1].name}}</text>
+    <text class='book-icon-right'></text>
+  </view>
+  <view class='border_view'></view>
+  <view class='novel_introduce'>
+    <text>{{introduce}}</text>
+  </view>
+  <view class='read_ctrl'>
+    <image class='home' src='/images/icons/home1.png' mode="widthFix" catchtap='backHome'></image>
+    <view class='btn_box'>
+      <view class='add_books' wx:if="{{is_collection==2}}" catchtap='addBook'>
+        <text class='icon'>+</text>
+        <text class='text'>加入书架</text>
+      </view>
+      <view class='add_books' wx:else catchtap='delBook'>
+        <text class='icon'>-</text>
+        <text class='text'>移出书架</text>
+      </view>
+      <text class='read' catchtap='toRead'>{{novel_chapter_id==0?'立即阅读':'继续阅读'}}</text>
+    </view>
+  </view>
+</view>
+<scroll-view class='novel_dir_box' hidden="{{show_dir}}" scroll-y="{{true}}">
+  <view class='mask_bok' catchtap='show_dir'></view>
+  <view class='novel_dir_inner_box' catchtap='' animation="{{dirAnimation.animation}}">
+    <view class='novel_dir'>
+      <view class='desc'>
+        <text>正文卷</text>
+      </view>
+      <view class='dir' wx:for="{{chapter_list}}" wx:for-index="index" wx:for-item="item" wx:key="{{index}}">
+        <navigator class='chapter' url="{{'/pages/chapter/chapter?novel_id='+novel_id+'&novel_chapter_id='+item.novel_chapter_id}}">{{item.name}}</navigator>
+      </view>
+    </view>
+  </view>
+</scroll-view>

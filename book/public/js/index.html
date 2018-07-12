@@ -1,0 +1,112 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+    <meta charset="UTF-8">  
+    <title>htmltopic</title> 
+    <script type="text/javascript" src="jq.js"></script>
+    <script type="text/javascript" src="html2canvas.min.js"></script>
+</head>  
+<body>
+    dsajlkfjdsalk
+    <h2>你好啊欢迎</h2>
+    jfldskj
+    <br>
+    fdsajljflk
+    dsajlkfjdsalk
+    <h2>你好啊欢迎</h2>
+    jfldskj
+    <br>
+    fdsajljflk
+    dsajlkfjdsalk
+    <h2>你好啊欢迎</h2>
+    jfldskj
+    <br>
+    fdsajljflk
+    dsajlkfjdsalk
+    <h2>你好啊欢迎</h2>
+    jfldskj
+    <br>
+    fdsajljflk
+    dsajlkfjdsalk
+    <h2>你好啊欢迎</h2>
+    jfldskj
+    <br>
+    fdsajljflk
+    dsajlkfjdsalk
+    <h2>你好啊欢迎</h2>
+    jfldskj
+    <br>
+    fdsajljflk
+    dsajlkfjdsalk
+    <h2>你好啊欢迎</h2>
+    jfldskj
+    <br>
+    fdsajljflk
+    dsajlkfjdsalk
+    <h2>你好啊欢迎</h2>
+    jfldskj
+    <br>
+    fdsajljflk
+    dsajlkfjdsalk
+    <h2>你好啊欢迎</h2>
+    jfldskj
+    <br>
+    fdsajljflk
+    dsajlkfjdsalk
+    <h2>你好啊欢迎</h2>
+    jfldskj
+    <br>
+    fdsajljflk
+    dsajlkfjdsalk
+    <h2>你好啊欢迎</h2>
+    jfldskj
+    <br>
+    fdsajljflk
+    dsajlkfjdsalk
+    <h2>你好啊欢迎</h2>
+    jfldskj
+    <br>
+    fdsajljflk
+    dsajlkfjdsalk
+    <h2>你好啊欢迎</h2>
+    jfldskj
+    <br>
+    fdsajljflk
+    dsajlkfjdsalk
+    <h2>你好啊欢迎</h2>
+    jfldskj
+    <br>
+    fdsajljflk
+    <p><button id="btn">点击生成图片</button></p>
+    <img src="" id="show">
+</body>
+<script type="text/javascript">
+    $(function(){
+       $('#btn').click(function(){
+            abc('html',function(url){
+                $('#show').attr('src',url);
+            })
+       });
+    });
+    function abc(selector,func){
+        var canvas2 = document.createElement("canvas");  
+        var w = parseInt($(selector).width());
+        var h = parseInt($(selector).height());
+        //将canvas画布放大若干倍，然后盛放在较小的容器内，就显得不模糊了  
+        canvas2.width = w * 2;  
+        canvas2.height = h * 2;  
+        canvas2.style.width = w + "px";  
+        canvas2.style.height = h + "px";  
+        //可以按照自己的需求，对context的参数修改,translate指的是偏移量  
+        //  var context = canvas.getContext("2d");  
+        //  context.translate(0,0);  
+        var context = canvas2.getContext("2d");  
+        context.scale(2, 2);  
+        html2canvas($(selector), { canvas: canvas2 }).then(function(canvas) {
+            if(func!=null){
+                func(canvas.toDataURL());
+            }
+        });  
+    }
+</script>
+</html>  
