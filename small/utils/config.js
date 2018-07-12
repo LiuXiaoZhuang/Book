@@ -1,7 +1,7 @@
 var _token = '';
 module.exports = {
   appName: "个人小时光",
-  domain: "https://book.laihuiying.top",
+  domain: "",//这里填域名
   api: {
     login: "/api/login",//登录
     novelTypeList:'/api/novel_type_list',//小说类型
